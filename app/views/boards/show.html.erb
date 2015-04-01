@@ -1,0 +1,63 @@
+<div class="jumbotron center"><p>
+  <h2><%= @board.name %></h2>
+</p>
+
+<div class"row">
+
+
+
+<%= link_to "Add Card", new_board_card_path(@board),
+								id: "new_link",
+								remote: true,
+                class: "btn btn-default btn-lg"  %>
+
+</div>
+	<div class="row">
+		<div class="col-sm-4">
+				<h3>Backlog</h3>
+				<% @backlog.each do |card| %>
+
+				<div class="panel panel-default" draggable="true" ondragstart="drag(event)" id="drag1">
+				  <div class="panel-body">
+				    <p><%= card.name %></p>
+						<%= link_to 'remove', [@board, card], method: :delete, data: {confirm: "Are you sure?"} %>
+
+				  </div>
+				</div>
+
+				<% end %>
+		</div>
+
+		<div class="col-sm-4">
+				<h3>Doing</h3>
+				<% @doing.each do |card| %>
+
+				<div class="panel panel-default" draggable="true" ondragstart="drag(event)" id="drag1">
+				  <div class="panel-body">
+				    <p><%= card.name %></p>
+						Edit <%= link_to 'Destroy', [@board, card], method: :delete %>
+				  </div>
+				</div>
+
+				<% end %>
+
+		</div>
+
+
+
+		<div class="col-sm-4">
+				<h3>Done</h3>
+				<% @done.each do |card| %>
+
+				<div class="panel panel-default">
+				  <div class="panel-body">
+				    <%= card.name %>
+				  </div>
+				</div>
+
+				<% end %>
+		</div>
+
+</div>
+
+<%= link_to 'Change name of this board', edit_board_path(@board) %> | <%= link_to 'Create new board', new_board_path %>

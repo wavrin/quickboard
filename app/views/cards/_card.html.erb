@@ -1,0 +1,14 @@
+<%= form_for [@board, @card], remote: true do |f| %>
+
+
+	<div class="panel panel-default">
+	  	<div class="panel-body">
+
+  <p><%= card.name %></p>
+
+
+	<%= link_to "remove", [@board, @card], method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+</div>
+</div>
+
+<% end %>

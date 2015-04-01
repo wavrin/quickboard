@@ -1,0 +1,12 @@
+<header id="content-header">
+  <h1>Cardsfor <%= link_to(@board.name, @board) %></h2>
+</header>
+
+
+  <% @cards.each do |card| %>
+    <div class="panel panel-default">
+      <%= card.name %>
+
+		</div>
+  <% end %>
+
